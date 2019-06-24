@@ -1,0 +1,12 @@
+GOC_ENABLED=0 GOOS=linux go build -a ./cmd/vaultd/
+incase of building error copy github files to goroot or gopath
+docker build -t vaultd .
+
+
+docker run -p 6060:8080 -p 6061:8081 --name localtes --rm vaultd
+
+curl -XPOST -d '{"password":"monkey"}' localhost:6060/hash
+
+
+sudo docker exec -t -i localtes /bin/bash 
+//view in files /install softwares
